@@ -51,7 +51,8 @@
     	char *string_ptr = "C language";	// 用字符串初始化
 		char *string[] = "C language";
 		char *string_ptr = string;			// 用字符数组初始化
-		ps. 对于 char *string_ptr = "C language"; 在C++11 中则使用 const char *string_ptr = "C language"; 否则编译出错, 参考 [http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c](http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c)
+		ps. 对于 char *string_ptr = "C language"; 在C++11 中则使用 const char *string_ptr = "C language"; 否则编译出错, 
+		参考 [http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c](http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c)
 		--- charPtrInit()
 
 	2. 与字符数组的区别
