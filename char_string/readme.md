@@ -51,11 +51,13 @@
     	char *string_ptr = "C language";	// 用字符串初始化
 		char *string[] = "C language";
 		char *string_ptr = string;			// 用字符数组初始化
-		ps. 对于 char *string_ptr = "C language"; 在C++11 中则使用 const char *string_ptr = "C language"; 否则编译出错, 参考 [http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c](http://http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c)
+		ps. 对于 char *string_ptr = "C language"; 在C++11 中则使用 const char *string_ptr = "C language"; 否则编译出错, 
+		参考 http://stackoverflow.com/questions/20944784/why-is-conversion-from-string-constant-to-char-valid-in-c-but-invalid-in-c
+
 		--- charPtrInit()
 
 	2. 与字符数组的区别
-		字符数组是一个数组, 每个元素的值都可以改变; 而字符串指针指向的是一个**常量字符串, 它被存放在程序的静态数据区, 一旦定义就不能改变.**
+		字符数组是一个数组, 每个元素的值都可以改变; 而字符串指针指向的是一个**常量字符串, 它被存放在程序的静态数据区, 一旦定义就不能改变**
 		--- modifyCharPtrValue()
 		注: *ptr 指向的内容不能改变, 但是 ptr指针本身可以改变, 可以指向其他的字符串.
 	
