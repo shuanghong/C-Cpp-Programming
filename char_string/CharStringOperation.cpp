@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <iostream>
+#include <string>
+
 void testNul(void)
 {
     char c1[10] = {'C', ' ', 'L', 'a', 'n', 'g', 'u', 'a', 'g', 'e'};
@@ -24,17 +27,17 @@ void calCharArrayLength(void)
     char c3[11] = {'C', ' ', 'L', 'a', 'n', 'g', 'u', 'a', 'g', 'e', '\0'};   // with NULL '\0'
     char c4[] = "C Language";
 
-    printf("c1 strlen length = %d\n", strlen(c1));
-    printf("c1 sizeof length = %d\n", sizeof(c1));
+    printf("c1 strlen length = %ld\n", strlen(c1));
+    printf("c1 sizeof length = %ld\n", sizeof(c1));
 
-    printf("c2 strlen length = %d\n", strlen(c2));
-    printf("c2 sizeof length = %d\n", sizeof(c2));
+    printf("c2 strlen length = %ld\n", strlen(c2));
+    printf("c2 sizeof length = %ld\n", sizeof(c2));
 
-    printf("c3 strlen length = %d\n", strlen(c3));
-    printf("c3 sizeof length = %d\n", sizeof(c3));
+    printf("c3 strlen length = %ld\n", strlen(c3));
+    printf("c3 sizeof length = %ld\n", sizeof(c3));
 
-    printf("c4 strlen length = %d\n", strlen(c4));
-    printf("c4 sizeof length = %d\n", sizeof(c4));  // with '\0'
+    printf("c4 strlen length = %ld\n", strlen(c4));
+    printf("c4 sizeof length = %ld\n", sizeof(c4));  // with '\0'
 /*******************************************************************
  * 
 c1 strlen length = 20
@@ -75,8 +78,37 @@ void modifyCharPtrValue(void)
     printf("string_ptr = %s\n", string_ptr);
 }
 
+void stringToCharPtr()
+{
+    const char *char_ptr = "C/C++ language";
+
+    std::string char_string(char_ptr);
+
+    std::cout<<"char ptr to string: "<<char_ptr<<std::endl;
 
 
+    std::string str = "C/C++ language";
+
+    const char* str_ptr = str.c_str();
+
+    printf("string to char ptr: %s\n", str_ptr);
+}
+
+void stringTocharArray(void)
+{
+    char c[] = "C/C++ language";
+
+    std::string str(c);
+
+    std::cout<<"char array to string: "<<str<<std::endl;
+
+
+    char char_array[100];
+    strncpy(char_array, str.c_str(), str.length());
+
+    printf("string to char array: %s\n", char_array);
+
+}
 
 int main(int argc, char* argv[])
 {
@@ -86,7 +118,11 @@ int main(int argc, char* argv[])
 
     //charPtrInit();
 
-    modifyCharPtrValue();
+    //modifyCharPtrValue();
+
+    stringToCharPtr();
+
+    stringTocharArray();
 
     return 0;
 }
