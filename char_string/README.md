@@ -1,5 +1,11 @@
-# 字符串,字符数组,以及字符串指针等相关的操作
+---
+title: 字符串,字符数组,以及字符串指针等相关的操作
+date: 2016-9-17 08:55:29 
+categories: C++
+toc: true
+---
 
+[源码](https://github.com/shuanghong/C-Cpp-Programming/blob/master/char_string/CharStringOperation.cpp)
 ## C 中对字符串的处理: 字符数组，字符指针
 
 * 字符数组
