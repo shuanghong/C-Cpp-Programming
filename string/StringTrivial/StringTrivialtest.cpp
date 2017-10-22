@@ -12,5 +12,9 @@ int main(int argc, char *argv[])
     str = getString();
     std::cout << "==============================" << std::endl;
 
+    String str1 = std::move(str);
+
+    std::cout << "++++++++++++++++++++++++++++++" << std::endl;
+
     return 0;
 }

@@ -48,7 +48,7 @@ public:
       //swap(tmp);
       return *this;
     }
-/*
+
     String(String&& rhs) noexcept
     : m_dataptr(rhs.m_dataptr)
     {
@@ -56,17 +56,18 @@ public:
         rhs.m_dataptr = nullptr;
     }
 
-    String& operator=(String&& rhs)
+    String& operator=(String&& rhs) noexcept
     {
-      std::cout << "move operator=" << std::endl;
-
-      delete[] m_dataptr;
-      m_dataptr = rhs.m_dataptr;
-      rhs.m_dataptr = nullptr;
-
-      return *this;
+        std::cout << "move operator=" << std::endl;
+        if (this != &rhs)
+        {
+            delete[] m_dataptr;
+            m_dataptr = rhs.m_dataptr;
+            rhs.m_dataptr = nullptr;
+        }
+        return *this;
     }
-*/
+
 
 private:
     size_t size() const
