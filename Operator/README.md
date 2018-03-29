@@ -21,6 +21,10 @@
 	代码中, if ((a == b) || (b == c)) 条件成立。即使添加 && (c > d), 由于逻辑或运算符短路, 条件仍然成立。  
 **这个在新写代码时可能会注意到, 但是如果是在已有逻辑上再添加新的判断条件, 很有可能被忽视。**
 
+	PS. operator&& 和 operator|| 的短路求值属性不应用于重载, 重载的运算符表现类似函数调用, 并始终求值两个运算数
+
+参考 [http://zh.cppreference.com/w/cpp/language/operator_logical](http://zh.cppreference.com/w/cpp/language/operator_logical)
+
 ## 运算符优先级
 
 	int a = 1, b = 2;
