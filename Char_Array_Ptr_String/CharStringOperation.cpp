@@ -81,17 +81,32 @@ void modifyCharPtrValue(void)
 void stringToCharPtr()
 {
     const char *char_ptr = "C/C++ language";
-
     std::string char_string(char_ptr);
-
     std::cout<<"char ptr to string: "<<char_ptr<<std::endl;
 
-
     std::string str = "C/C++ language";
-
     const char* str_ptr = str.c_str();
-
     printf("string to char ptr: %s\n", str_ptr);
+  
+
+    printf("string length: %d, char ptr length: %d\n\n", (int)str.size(), (int)std::strlen(str_ptr));
+    
+	str[1] = '&';
+	printf("char ptr change: %s\n", str_ptr);
+	
+	str = "C++ language";
+	printf("char ptr change: %s\n", str_ptr);
+	
+/*******************************************************************
+ * 
+char ptr to string: C/C++ language
+string to char ptr: C/C++ language
+string length: 14, char ptr length: 14
+
+char ptr change: C&C++ language
+char ptr change: C++ language
+ *
+ *******************************************************************/	
 }
 
 void stringTocharArray(void)
