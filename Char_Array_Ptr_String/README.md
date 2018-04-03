@@ -100,10 +100,39 @@ string 类有多种初始化方式, 详尽的参考 [http://www.cplusplus.com/re
 
 	注意: str.c_str() 返回 const char* 指针, 指向以空字符结尾的字符数组, 数组内容等于 string 对象内容.
 
-	* 如果 str 对象为空, str.c_str() 
+	* 虽然是 const char*, 一般来说指向的内容不可改变. 但是 string 类的实现实际上封装着一个 char 指针, c_str() 直接返回该指针的引用, 其生命周期是 string 对象的生命期, 由 string 管理. 因此 const char* 指向的字符数组是临时的, 当有改变这些数据的成员函数被调用后, 其中的数据就会失效.
 
-* 与 char[] 之间的互转
+		    std::string str = "C/C++ language";
+    		const char* str_ptr = str.c_str();
 
-		---stringTocharArray()
+			str[1] = '&';
+			printf("char ptr change: %s\n", str_ptr);	// 输出 C&C++ language
+			str = "C++ language";
+			printf("char ptr change: %s\n", str_ptr);	// 输出 C++ language
+
+	*  c_str() 的指针，不需要手动释放或删除, 指针的生命周期与 string 一致
+
+	所以, 如果想继续 c_str() 指向的数组, 先 copy, 再使用. 否则因为 string 对象的改变会导致的错误将是不可想象
+
+        char* str_cpoy = new char;
+	    std::string str = "C/C++ language";
+	    
+	    strncpy(str_cpoy, str.c_str(), str.length()+1);
+		str = "C++ language";
+
+		printf("%s\n", str_cpoy);	// str 对象改变但输出不变: C/C++ language
+
+
+3. 与 char[] 之间的互转, 参见[源码](https://github.com/shuanghong/C-Cpp-Programming/blob/master/Char_Array_Ptr_String/CharStringOperation.cpp) stringTocharArray()
+
+	* 注意: char *strncpy(char *dest, const char *src, std::size_t count);
+	
+		复制 src 所指向的字符串至多 count 个字符**（包含终止空字符）**到 dest 所指向的字符数组.  
+		若在复制整个字符串 src 前抵达 count ，则产生的字符数组不是空终止的;  
+		若在复制来自 src 的终止空字符后未抵达 count, 则写入额外的空字符到 dest, 直至写入总共 count 个字符;  
+		若字符串重叠, 则行为未定义!!!
+
+			char char_array[15];
+    		strncpy(char_array, str.c_str(), str.length()+1);		// include null-terminated character 
 
 

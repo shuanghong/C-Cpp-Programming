@@ -118,11 +118,11 @@ void stringTocharArray(void)
     std::cout<<"char array to string: "<<str<<std::endl;
 
 
-    char char_array[100];
-    strncpy(char_array, str.c_str(), str.length());
+	char char_array[15];
+    strncpy(char_array, str.c_str(), str.length()+1);		// include null-terminated character 
 
-    printf("string to char array: %s\n", char_array);
-
+    printf("string to char array: %s, length:%ld\n", char_array, str.length());					// string to char array: C/C++ language, length:14
+    printf("char array size: %ld, length:%ld\n", sizeof(char_array), strlen(char_array));		// char array size: 15, length:14
 }
 
 int main(int argc, char* argv[])
