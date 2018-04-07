@@ -11,3 +11,5 @@
 * [运算符优先级](https://github.com/shuanghong/C-Cpp-Programming/tree/master/Operator)
 
 ## String
+
+* [c_str()](http://https://github.com/shuanghong/C-Cpp-Programming/tree/master/Char_Array_Ptr_String)
