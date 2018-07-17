@@ -24,7 +24,7 @@
 	而 char c[10] = {'C', ' ', 'L', 'a', 'n', 'g', 'u', 'a', 'g', 'e'}; 则没有问题.  
 	参见[源码](https://github.com/shuanghong/C-Cpp-Programming/blob/master/Char_Array_Ptr_String/CharStringOperation.cpp) testNul()
 	
-3. 求度, sizeof 与 strlen
+3. 求度, sizeof 与 strlen. 参见[源码](https://github.com/shuanghong/C-Cpp-Programming/blob/master/Char_Array_Ptr_String/CharStringOperation.cpp) calCharArrayLength() 
  
 	区别:  
 	a. sizeof 是运算符, 可以用类型(char/int)作参数; strlen 是函数, 只能用 char* 做参数, 且必须是以'\0'结尾的.  
@@ -32,8 +32,23 @@
   
 		大部分编译程序在编译阶段就把 sizeof 计算过了, 是类型或变量的长度, 这就是sizeof(x)可以用来定义数组维数的原因.  
 
-	c. sizeof 计算的是分配的字符数组所占的实际内存空间的大小, 不受里面存储的内容改变, 即使在字符数组没有终止符'\0' 的	时候, 也能够计算出数组长度; strlen 计算字符串的长度, 以'\0'为字符串结束.  
-	参见[源码](https://github.com/shuanghong/C-Cpp-Programming/blob/master/Char_Array_Ptr_String/CharStringOperation.cpp) calCharArrayLength()  
+	c. sizeof 计算的是分配的字符数组所占的实际内存空间的大小, 不受里面存储的内容改变, 即使在字符数组没有终止符'\0' 的	时候, 也能够计算出数组长度; strlen 计算字符串的长度, 以'\0'为字符串结束, 如果没有终止符则结果不准, 如函数 calCharArrayLength()中的 c1 strlen length = 20 以及下面的代码:
+
+		int main()
+		{
+		    char a[] = "xyz";
+		    char b[] = {'x', 'y', 'z'};
+		 // char b[] = {'x', 'y', 'z', '\0'}; 
+		    int lena = strlen(a);
+		    int lenb = strlen(b);
+		    printf("%d, %d", lena, lenb);
+		    return 0;
+		}
+		Output: 3, 6
+
+
+	 
+	
 
 4. 结论
 	
