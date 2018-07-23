@@ -2,8 +2,7 @@
 
 ## 逻辑运算符短路
 
-* 对于逻辑或运算符，若第一运算数为 true ，则不求值第二运算数。
-* 对于逻辑与运算符，若第一运算数为 false ，则不求值第二运算数。
+* 对于逻辑或运算符 ||, 若第一运算数为 true, 则不求值第二运算数.
 
 		int a = 1, b = 1, c = 2, d = 3;
 	
@@ -29,7 +28,35 @@
 
 参考 [http://zh.cppreference.com/w/cpp/language/operator_logical](http://zh.cppreference.com/w/cpp/language/operator_logical)
 
-## 运算符优先级
+* 对于逻辑与运算符 &&, 若第一运算数为 false, 则不求值第二运算数.
+
+	比如下面的代码防止除 0
+	
+		if (b != 0 && a/b > 1)  
+
+* 如果不想要短路的效果, 使用运算符 &, |
+
+	运算符 & 或者 |, 当操作数是 bool 类型时, 计算操作数的逻辑与、或; 当操作数是数值类型时, 执行按位与、或.
+
+		int main( )
+		{
+			int a = 1, b = 2, c = 2, d = 3;
+			
+			if ((a > b) & ((c = a+b) > d))
+			{
+			   printf(" c = %d\n", c);
+			}
+			else 
+			    printf("c = %d\n", c);
+			    
+			return 0;
+		}
+
+	output:
+
+		c = 3
+
+## 运算符优先级 ? :
 
 	int a = 1, b = 2;
     int t = 1;
