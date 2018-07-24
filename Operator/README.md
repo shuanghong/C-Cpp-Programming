@@ -34,24 +34,36 @@
 	
 		if (b != 0 && a/b > 1)  
 
-* 如果不想要短路的效果, 使用运算符 &, |
+* 如果想避免短路, 可以使用运算符 &, |
 
-	运算符 & 或者 |, 当操作数是 bool 类型时, 计算操作数的逻辑与、或; 当操作数是数值类型时, 执行按位与、或.
+	运算符 & 或者 |, 当操作数是 bool 类型时, 计算操作数的逻辑与、或; 当操作数是数值类型时, 执行按位与、或.  
+	if (A & B++), 不管 A 为 false 还是 true, 都会计算 B 的值.
 
-		int main( )
+		int a = 1, b = 2, c = 2, d = 3;
+		
+		if ((a > b) & ((c = a+b) > d))
 		{
-			int a = 1, b = 2, c = 2, d = 3;
-			
-			if ((a > b) & ((c = a+b) > d))
-			{
-			   printf(" c = %d\n", c);
-			}
-			else 
-			    printf("c = %d\n", c);
-			    
-			return 0;
+		   printf(" c = %d\n", c);
 		}
+		else 
+		    printf("c = %d\n", c);
 
+	output:
+
+		c = 3
+
+* 如果想避免短路, 也可以对第一个操作数表达式结果取非
+
+	if (!ExpressionA && ExpressionB)	// 当 ExpressionA 不成立时继续执行 ExpressionB 
+
+		int a = 1, b = 2, c = 2, d = 3;
+		
+		if (!(a > b) && ((c = a+b) > d))
+		{
+		   printf(" c = %d\n", c);
+		}
+		else 
+		    printf("c = %d\n", c);
 	output:
 
 		c = 3
